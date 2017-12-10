@@ -14,11 +14,15 @@ class Admin::RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       flash[:notice] = "Restaurant was successfully created!"
-      redirct_to admin_restaurant_path
+      redirect_to admin_restaurants_path
     else
       flash.now[:alert] = "Restaurant was filed to create!!"
       render :new
     end
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   private
