@@ -4,6 +4,8 @@
       <h1><%= @restaurant.name %></h1>
     </div>
 
+    <div class="col-md-12"> [<%= @restaurant.category.name %>] </div>
+
     <div class="col-md-4">
       <%= image_tag @restaurant.image, width: '600px', class: "img-responsive center-block" %>
       <br>
