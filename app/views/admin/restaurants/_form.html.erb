@@ -11,7 +11,11 @@
       <hr>
     <% end %>
 
+
+
     <%= form_for [:admin, @restaurant] do |f| %>
+
+      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "請選擇"}, {class: "form-control"} %> <!--{prompt: "true"}也是可以-->
   
       <div class="form-group">
         <%= f.label :name, "Name:" %>
