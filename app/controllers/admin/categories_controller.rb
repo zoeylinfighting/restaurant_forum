@@ -14,10 +14,10 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new
+    @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = "Category was successfully creased!"
-      redirct_to_admin_categories_paht
+      flash[:notice] = "Category was successfully created!"
+      redirect_to admin_categories_path
     else
       @categories = Category.all
       render :index
@@ -33,6 +33,13 @@ class Admin::CategoriesController < ApplicationController
       @categories = Category.all
       render :index
     end  
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:alert] = "Category was successfully deleted!!"
+    redirect_to admin_categories_path
   end
 
 private

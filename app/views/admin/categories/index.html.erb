@@ -13,7 +13,7 @@
         <div class="form-inline">
           <%= form_for [:admin, @category] do |f| %> 
             <div class="form-group">
-              <%= f.text_field :name, placeholder: "Category Name", class: "form-cotrol" %> 
+              <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %> 
             </div>
             <%= f.submit class: "btn btn-primary" %>        
               <% if @category.errors.any? %>
@@ -36,7 +36,8 @@
             <tr>
               <th scope="row"><%= category.id%></th>
               <td><%= category.name %></td>
-              <td><%= link_to '', admin_categories_path(id: category.id), class: "glyphicon glyphicon-eye-open" %>
+              <td><%= link_to 'Edit', admin_categories_path(id: category.id), class: "glyphicon glyphicon-pencil" %> |
+                <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %>
             </tr>
             <% end %>
           </tbody>
