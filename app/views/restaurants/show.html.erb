@@ -24,10 +24,25 @@
       <strong>Description:</strong> <%= @restaurant.description %>
     </div>
 
-    <div class="clearfix"></div>
-    <hr>
-      <div class="col-md-12">
-        <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary" %>
+    <div class="col-md-12">
+      <hr>
+      <%= form_for [@restaurant, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "走過路過不要錯過，留個言再走吧！", class: "form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-success" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+        
+        <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
