@@ -11,6 +11,7 @@
   <body>
 
     <!--<nav class= "navbar navbar-default">-->
+    <!--Navbar-->
     <nav class="navbar navbar-inverse">
 
       <div class="container-fluid">
@@ -21,7 +22,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          <%= link_to "餐廳評論網", root_path, class:"navbar-brand" %>
+          <%= link_to " 餐廳評論網", root_path, class: "navbar-brand glyphicon glyphicon-book" %>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,45 +30,46 @@
 
             <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to 'Admin後台', admin_restaurants_path %></li>
+                <li><p class="navbar-text">Hi, <%= current_user.email.split("@").first %></p></li>
+                <li><%= link_to' Admin後台', admin_restaurants_path, class: "glyphicon glyphicon-folder-open" %></li>
               <% end %>
-            <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-            <li><%= link_to('Log out', destroy_user_session_path, method: :delete) %></li>
-            <li><%= link_to('Change password', edit_user_registration_path) %></li>
-            <% else %>
-            <li><%= link_to('Sign up', new_user_registration_path) %></li>
-            <li><%= link_to('Log in', new_user_session_path) %></li>
+                <li><%= link_to ' profile', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
+                <li><%= link_to(' Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out") %></li>
+                <li><%= link_to('Change password', edit_user_registration_path, class: "glyphicon glyphicon-lock") %></li>
+              <% else %>
+                <li><%= link_to('Sign-up', new_user_registration_path, class: "glyphicon glyphicon-cog") %></li>
+                <li><%= link_to(' Log-in', new_user_session_path, class: "glyphicon glyphicon-log-in") %></li>
             <% end %>
           </ul>
         </div>
       </div>
     </nav>
 
-    <% if flash[:notice] %>
     <div class="container">
       <div class="row">
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <%= notice %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+        
+        <% if flash[:notice] %>
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= notice %>
+          </div>
 
-    <% if flash[:alert] %>
-    <div class="container">
-      <div class="row">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-          <button type="button" class="close" date-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <%= alert %>
-        </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" date-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= alert %>
+          </div>
+
+        <% end %>
       </div>
     </div>
-    <% end %>
 
     <%= yield %>
   </body>
