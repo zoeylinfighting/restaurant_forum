@@ -10,7 +10,7 @@
     <br>
 
     <div class="col-md-4">
-      <%= image_tag @restaurant.image, width: '600px', class: "img-responsive center-block" %>
+      <%= image_tag "http://via.placeholder.com/600x500", class: "img-responsive center-block" %>
       <br>
       <div class="well well-lg">
         <ul class="list-unstyled">
@@ -57,7 +57,9 @@
       <hr>
       <% end %> 
 
-      <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary" %>
+      <div class="clearfix">
+        <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary" %>
+      </div>
     </div>
 
   </div>
