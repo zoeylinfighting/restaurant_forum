@@ -2,12 +2,13 @@
   <div class="row">
     <div class="col-md-12">
       <h1><%= @restaurant.name %></h1>
+
+    <h4><p class="label label-default"> [<%= @restaurant.category.name %>] </p></h4>
+    
     </div>
 
-    <div class="col-md-12"> [<%= @restaurant.category.name %>] </div>
-
     <div class="col-md-4">
-      <%= image_tag @restaurant.image, width: '600px', class: "img-responsive center-block" %>
+      <%= image_tag "http://via.placeholder.com/600x500", class: "img-responsive center-block" %>
       <br>
       <div class="well well-lg">
         <ul class="list-unstyled">
