@@ -28,9 +28,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="pull-right text-right nav navbar-nav">
 
-            <% if current_user %>
+            <% if current_user %> 
+              <li><p class="navbar-text"><%= current_user.email.split("@").first %>歡迎回來</p></li>
               <% if current_user.admin? %>
-                <li><p class="navbar-text">Hi, <%= current_user.email.split("@").first %></p></li>
                 <li><%= link_to' Admin後台', admin_restaurants_path, class: "glyphicon glyphicon-folder-open" %></li>
               <% end %>
                 <li><%= link_to ' profile', user_path(current_user), class: "glyphicon glyphicon-user" %></li>
