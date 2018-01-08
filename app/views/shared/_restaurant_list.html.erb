@@ -1,16 +1,16 @@
 <div class="container">
-<% @restaurants.each do |restaurant|%>
-  <div class="col-sm-6 col-md-4">
-    <div class="restaurant-item"><!--自設css-->
-      <%= image_tag "http://via.placeholder.com/300x250", class: "img-responsive center-block" %>
-      <div class="caption">
-        <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
-        <p class="label label-default"><%= restaurant.category.name %></p>
-        <p><%= truncate(restaurant.description, length:80) %></p>
+  <% @restaurants.each do |restaurant|%>
+    <div class="col-sm-6 col-md-4">
+      <div class="restaurant-item"><!--自設css-->
+        <%= image_tag "http://via.placeholder.com/300x250", class: "img-responsive center-block" %>
+        <div class="caption">
+          <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+          <p class="label label-default"><%= restaurant.category.name %></p>
+          <p><%= truncate(restaurant.description, length:80) %></p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
 
 <div class="text-center">
