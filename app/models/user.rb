@@ -3,9 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  def admin?
-    self.role == "admin"
-  end
 
   mount_uploader :avatar, AvatarUploader
 
@@ -14,8 +11,12 @@ class User < ApplicationRecord
 
   before_save :initialize_name
 
+  def admin?
+    self.role == "admin"
+  end
+
   def initialize_name
-    if self.name == '' || self.name == nil
+    if self.name == ""
       self.name = self.email.split('@').first
     end
   end
