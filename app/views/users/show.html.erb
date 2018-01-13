@@ -1,45 +1,66 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2">
 
+      <!--page-header 裡顯示個人檔案-->
       <div class="page-header">
 
         <div class="col-md-6 col-sm-4">
           <div class="text-center thumbnail">
-            <%= image_tag @user.avatar, class: "img-responsive img-rounded"%>
+            <% if @user.avatar? %>
+              <%= image_tag @user.avatar, alt: 'avatar', class: " img-rounded"%>
+            <% else %>
+              <%= image_tag "http://via.placeholder.com/250x250", alt: 'avatar', class: "img-rounded" %>
+            <% end %>
           </div>
         </div>
       
         <div class="col-md-6 col-sm-4">
           <h2><%= @user.name %></h2>
           <p><%= @user.email %></p>
-          <div><%= simple_format @user.intro %></div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-
-      <div class= "col-md-4">
-        <% @commented_restaurants.each do |restaurant| %>
-        <div class= "panel panel-info">
-        <div calss= "panel-body">
-          <%= image_tag "http://via.placeholder.com/150x100", class: "img-responsive center-block" %><br \>
-          <div class="panel-footer">
-          <h5><%= restaurant.name %></h5>
-        
-      </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-                      
-        <div class="col-md-9 col-sm-8">
-          <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary" %>
-          <% if @user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-success" %>
+          <div><%= simple_format @user.intro %></div> 
+          <br>
+          <!--any way to code 'back to index'-->
+          <%= link_to restaurants_path do %> 
+            <i class= 'btn btn-primary' %> Go Back!</i>
+            <% end %>
+          <% if @user.email == current_user.email %> 
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-success"%>
           <% end %>
+
         </div>
+
+        <div class="clearfix"></div>
 
       </div>
 
+      <!--顯示已評論過的餐廳清單-->
+
+      <div class= "panel panel-info">
+
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= @commented_restaurants.count %></strong> Commented Restaurants</h3>
+        </div>
+
+          <div calss= "panel-body">
+            <% @commented_restaurants.each do |restaurant| %>
+
+            <%= link_to restaurant_path(restaurant) do %>
+
+            <div class="my-restaurant thumbnail">
+              <div>
+                <%= image_tag "http://via.placeholder.com/150x100", class: "img-responsive img-rounded" %>
+                <div class="panel-footer">
+                  <h5><%= restaurant.name %></h5>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+            <% end %>
+             
+      </div>
+
+    </div>
   </div>
 </div>

@@ -31,3 +31,18 @@
   width: 250px;
   height: 250px;
 }
+
+.my-restaurant{
+  display: inline-block;
+  text-align: center;
+  margin: 10px 10px;
+}
+
+.my-restaurant > div{
+  height: 50px;
+}
+
+.my-restaurant img{
+  max-height: 100%;
+}
+
