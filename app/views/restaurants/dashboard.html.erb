@@ -1,0 +1,14 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-12">
+      <h1><%= @restaurant.name %>'s Dashboard</h1>
+      <hr>
+        <ul>
+        <li>有 <%= @restaurant.comments.count%> 筆評論</li>
+        <li>這家餐廳平均價位為 $xxx</li>
+        <li>有 xx 人收藏這家餐廳</li>
+        </ul>
+        <%= link_to 'Go Back', :back, class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>

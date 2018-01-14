@@ -1,4 +1,15 @@
-<div class="container">
+<div class= "container">
+  <div class= "row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to 'Index', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Feeds', feeds_restaurants_path %>
+      </li>
+    </ul>
+
   <% @restaurants.each do |restaurant| %>
     <div class="col-sm-6 col-md-4">
       <div class="restaurant-item"><!--自設css-->
@@ -11,9 +22,10 @@
       </div>
     </div>
   <% end %>
-</div>
 
 <div class="text-center">
   <%= paginate @restaurants %>
 </div>
 
+  </div>
+</div>
