@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :restrict_with_error
   has_many :restaurants, through: :comments
 
+  # 【使用者收藏很多餐廳】的多對多關聯
+  # 使用dependent: :destroy-當user被刪除時,相關的favorite物件也會一併被刪除
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
+
   before_save :initialize_name
 
   def admin?

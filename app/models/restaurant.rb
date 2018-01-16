@@ -6,4 +6,7 @@ class Restaurant < ApplicationRecord
 
   # 當Restaurant物件被刪除時，順便刪除內部的comment
   has_many :comments, dependent: :destroy
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 end
