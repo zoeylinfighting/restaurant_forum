@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
+  # 「使用者對很多餐廳按讚」的多對多關係
+  has_many :likes, dependent: :destroy
+  has_many :liked_restaurants, through: :likes, source: :restaurant
+
   before_save :initialize_name
 
   def admin?
