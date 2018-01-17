@@ -26,10 +26,13 @@
       <strong>Description:</strong> <%= @restaurant.description %>
       <hr>
       <%= link_to 'Dashboard', dashboard_restaurant_path(@restaurant), class: "btn btn-danger"%>
-      <%= link_to 'Favorite', favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-success" %>
-      <%= link_to 'Unfavorite', unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-info"%>
-      
-      <br>
+
+      <% if @restaurant.is_favorited?(current_user) %>
+        <%= link_to 'Unfavorite', unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-info"%>
+      <% else %>
+        <%= link_to 'Favorite', favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-success" %>
+      <% end %>
+     
       <%= link_to 'GoBack', url_for(request.env["HTTP_REFERER"] || root_path), class: "btn btn-primary" %>
 
     </div>
