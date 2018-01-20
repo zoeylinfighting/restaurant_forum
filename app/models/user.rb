@@ -19,6 +19,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
+  # 「使用者的追蹤使用者」的self-referential relationships設定
+  # 不需要另加source,Rails可從Followship Model設定來判斷follwings指向User Model
+  has_many :followships, dependent: :destroy
+  has_many :followings, though: :followships
+
   before_save :initialize_name
 
   def admin?
