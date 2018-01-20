@@ -22,7 +22,7 @@ class User < ApplicationRecord
   # 「使用者的追蹤使用者」的self-referential relationships設定
   # 不需要另加source,Rails可從Followship Model設定來判斷follwings指向User Model
   has_many :followships, dependent: :destroy
-  has_many :followings, though: :followships
+  has_many :followings, through: :followships
 
   before_save :initialize_name
 
