@@ -13,4 +13,11 @@ class FollowshipsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+
+  def destroy
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship.destroy
+    flash[:alert] = "停止追蹤！"
+    redirect_back(fallback_location: root_path)
+  end
 end
