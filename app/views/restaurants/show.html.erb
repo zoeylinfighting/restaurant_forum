@@ -31,7 +31,7 @@
 
       <%= render partial: "shared/like", locals: {restaurant: @restaurant} %>
       
-      <%= link_to 'GoBack', url_for(request.env["HTTP_REFERER"] || root_path), class: "btn btn-primary" %>
+      <%= link_to 'Go Back', url_for(request.env["HTTP_REFERER"] || root_path), class: "btn btn-primary" %>
 
     </div>
 

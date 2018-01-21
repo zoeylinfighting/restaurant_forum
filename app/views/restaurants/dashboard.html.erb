@@ -8,7 +8,7 @@
         <li>這家餐廳平均價位為 $xxx</li>
         <li>有 xx 人收藏這家餐廳</li>
         </ul>
-        <%= link_to 'Go Back', :back, class: "btn btn-warning" %>
+        <%= link_to 'GoBack', url_for(request.env["HTTP_REFERER"] || root_path), class: "btn btn-primary" %>
     </div>
   </div>
 </div>

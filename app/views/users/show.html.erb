@@ -22,7 +22,7 @@
           <br>
           <!--any way to code 'back to index'-->
           <%= link_to restaurants_path do %> 
-            <i class= 'btn btn-primary' %> Go Back!</i>
+            <%= link_to 'Go Back', url_for(request.env["HTTP_REFERER"] || root_path), class: "btn btn-primary" %>
             <% end %>
           <% if @user.email == current_user.email %> 
             <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-success"%>
