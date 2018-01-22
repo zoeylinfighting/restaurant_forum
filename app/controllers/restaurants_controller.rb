@@ -36,24 +36,18 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  # POST /restaurant/:id/like
+  # POST /restaurant/:id/favorite
   def like
     @restaurant = Restaurant.find(params[:id])
     Like.create(restaurant: @restaurant, user: current_user)
     redirect_back(fallback_location: root_path)
   end
 
-  # POST /restaurant/:id/unlike
   def unlike
     @restaurant = Restaurant.find(params[:id])
     likes = Like.where(restaurant: @restaurant, user: current_user)
     likes.destroy_all
     redirect_back(fallback_location: root_path)
-  end
-
-  # GET /restaurants/ranking
-  def ranking
-    @restaurants = Restaurant.order(favorites_count: :desc).limit(10)
   end
 
 end
